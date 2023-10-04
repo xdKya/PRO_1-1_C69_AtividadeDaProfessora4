@@ -37,26 +37,8 @@ export default class TransactionScreen extends Component {
 
   render() {
     const { domState, hasCameraPermissions, scannedData, scanned } = this.state;
-    if (domState === "scanner") {
-      return (
-        <BarCodeScanner
-          onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
-          style={StyleSheet.absoluteFillObject}
-        />
-      );
-    }
-
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>
-          {hasCameraPermissions ? scannedData : "Solicitar permissão da Camera"}
-        </Text>
-        <TouchableOpacity
-          style={[styles.button, { marginTop: 25 }]}
-          onPress={() => this.getCameraPermissions("scanner")}
-        >
-          <Text style={styles.buttonText}>Digitalizar QR Code</Text>
-        </TouchableOpacity>
       </View>
     );
   }
